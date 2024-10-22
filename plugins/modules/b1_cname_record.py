@@ -214,7 +214,7 @@ def create_cname_record(data):
             auth_zone = get_cname_record(data)
             payload = {}
             if "results" in auth_zone[2].keys() and len(auth_zone[2]["results"]) > 0:
-                return update_cname_record(data)
+                return auth_zone
             else:
                 zone_endpoint = f"/api/ddi/v1/dns/auth_zone?_filter=fqdn==\"{data['zone']}\""
                 zone = connector.get(zone_endpoint)
@@ -260,9 +260,9 @@ def delete_cname_record(data):
             return connector.delete(endpoint)
         else:
             return (
-                True,
                 False,
-                {"status": "400", "response": "Object not found", "data": data},
+                False,
+                {"status": "200", "response": "Object not found", "data": data},
             )
     else:
         return (
