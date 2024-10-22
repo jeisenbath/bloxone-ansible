@@ -263,9 +263,9 @@ def delete_a_record(data):
             return connector.delete(endpoint)
         else:
             return (
-                True,
                 False,
-                {"status": "400", "response": "Object not found", "data": data},
+                False,
+                {"status": "200", "response": "Object not found", "data": data},
             )
     else:
         return (
