@@ -32,8 +32,10 @@ class Request(object):
         if not HAS_REQUESTS_LIB:
             raise ImportError('Missing required library "requests"') from REQUESTS_LIB_IMP_ERR
 
-    def get(self, endpoint, data):
+    def get(self, endpoint, data=None):
         """GET API request object"""
+        if data is None:
+            data = {}
         try:
             headers = {"Authorization": f"Token {self.token}"}
             url = f"{self.baseUrl}{endpoint}"
@@ -49,8 +51,10 @@ class Request(object):
             meta = {"status": result.status_code, "response": result.json()}
             return (True, False, meta)
 
-    def create(self, endpoint, data, body=True):
+    def create(self, endpoint, data=None, body=True):
         """POST API request object"""
+        if data is None:
+            data = {}
         try:
             headers = {"Authorization": f"Token {self.token}"}
             url = f"{self.baseUrl}{endpoint}"
@@ -69,8 +73,10 @@ class Request(object):
             meta = {"status": result.status_code, "response": result.json()}
             return (True, False, meta)
 
-    def update(self, endpoint, data):
+    def update(self, endpoint, data=None):
         """PATCH API request object"""
+        if data is None:
+            data = {}
         try:
             headers = {"Authorization": f"Token {self.token}"}
             url = f"{self.baseUrl}{endpoint}"
@@ -86,8 +92,10 @@ class Request(object):
             meta = {"status": result.status_code, "response": result.json()}
             return (True, False, meta)
 
-    def put(self, endpoint, data):
+    def put(self, endpoint, data=None):
         """PUT API request object"""
+        if data is None:
+            data = {}
         try:
             headers = {"Authorization": f"Token {self.token}"}
             url = f"{self.baseUrl}{endpoint}"
