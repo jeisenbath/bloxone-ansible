@@ -66,7 +66,7 @@ class Request(object):
             raise Exception("API request failed")
 
         if result.status_code in [200, 201, 204]:
-            return (False, False, result.json())
+            return (False, True, result.json())
         elif result.status_code == 401:
             return (True, False, result.content)
         else:
@@ -85,7 +85,7 @@ class Request(object):
             raise Exception("API request failed")
 
         if result.status_code in [200, 201, 204]:
-            return (False, False, result.json())
+            return (False, True, result.json())
         elif result.status_code == 401:
             return (True, False, result.content)
         else:
@@ -104,7 +104,7 @@ class Request(object):
             raise Exception("API request failed")
 
         if result.status_code in [200, 201, 204]:
-            return (False, False, result.json())
+            return (False, True, result.json())
         elif result.status_code == 401:
             return (True, False, result.content)
         else:
@@ -124,7 +124,7 @@ class Request(object):
             raise Exception("API request failed")
 
         if result.status_code in [200, 201, 204]:
-            return (False, False, result.json())
+            return (False, True, result.json())
         elif result.status_code == 401:
             return (True, False, result.content)
         else:
